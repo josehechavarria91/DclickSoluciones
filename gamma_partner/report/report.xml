@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="report_suppliers_pdf" model="ir.actions.report">
+            <field name="name">Suppliers</field>
+            <field name="model">res.partner</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">gamma_partner.report_suppliers</field>
+            <field name="report_file">gamma_partner.report_suppliers</field>
+            <!--<field name="print_report_name">'Products of supplier - %s' % (object.name)</field>-->
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_suppliers" model="ir.actions.report">
+            <field name="name">Suppliers with more than five products</field>
+            <field name="model">suppliers.report.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">gamma_partner.report_suppliers_more_than_five</field>
+            <field name="report_file">gamma_partner.report_suppliers_more_than_five</field>
+            <!--<field name="print_report_name">'Suppliers'</field>-->
+            <field name="binding_model_id" ref="model_suppliers_report_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

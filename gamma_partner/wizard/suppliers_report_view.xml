@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_report_suppliers_form" model="ir.ui.view">
+        <field name="name">view.report.suppliers.form</field>
+        <field name="model">suppliers.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Products by Supplier">
+                <group>
+                    <field name="supplier_id"/>
+                    <h1>Suppliers with more than 5 products</h1>
+                </group>
+                <footer>
+                    <button name="action_print_report" type="object" string="Ver" class="oe_highlight"/>
+                    <button string="Cancelar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_report_suppliers" model="ir.actions.act_window">
+        <field name="name">Suppliers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">suppliers.report.wizard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="gamma_partner.view_report_suppliers_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

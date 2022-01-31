@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+
+        <record id="res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='alert alert-warning oe_edit_only']" position="after">
+                    <header>
+                        <button name="%(gamma_partner.action_report_suppliers)d" type="action" string="Wizard"/>
+                    </header>
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button class="oe_stat_button" name="action_view_products" type="object" icon="fa-dollar">
+                            <!--attrs="{'invisible': [('gamma_supplier', '=', False)]}">-->
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="gamma_products_count"/>
+                            </span>
+                            <span class="o_stat_text">Productos</span>
+                        </div>
+                    </button>
+                </xpath>
+
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="placeholder">Nombre y apellidos</attribute>
+                </xpath>
+                <field name="vat" position="after">
+                    <field name="gamma_identifier"/>
+                    <field name="gamma_supplier"/>
+                </field>
+                <field name="category_id" position="after">
+                    <field name="gamma_type"/>
+                </field>
+
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="suppliers_categ" name="Suppliers" parent="sale.sale_menu_root"
+                  action="action_report_suppliers"/>
+
+    </data>
+</odoo>
